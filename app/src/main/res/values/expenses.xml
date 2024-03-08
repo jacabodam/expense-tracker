@@ -1,0 +1,15 @@
+<resources>
+    <string name="category_prompt">Select Category</string>
+    <string-array name="categories_array">
+        <item>Food</item>
+        <item>Transportation</item>
+        <item>Utilities</item>
+        <item>Entertainment</item>
+        <item>Healthcare</item>
+        <item>Clothing</item>
+        <item>Education</item>
+        <item>Personal Care</item>
+        <item>Housing</item>
+        <item>Other</item>
+    </string-array>
+</resources>
