@@ -8,6 +8,7 @@
     <string name="previous">Previous</string>
     <string name="add_expense">Add Expense</string>
     <string name="pick_date">Date</string>
+    <string name="clear_filter">Clear</string>
     <string name="apply_filter">Apply</string>
 
     <string name="lorem_ipsum">

@@ -14,30 +14,52 @@
     <!-- Filter Options -->
     <LinearLayout
         android:id="@+id/filterLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/spinnerCategoryFilter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_weight="1"
             android:prompt="@string/category_prompt" />
 
         <Button
             android:id="@+id/buttonPickDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_weight="1"
             android:text="@string/pick_date" />
+
+
+
+    </LinearLayout>
+
+    <!-- Clear and Apply Filter Buttons -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/filterLayout"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonClearFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear_filter"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel" />
 
         <Button
             android:id="@+id/buttonApplyFilter"
-            android:layout_width="52dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_weight="1"
             android:text="@string/apply_filter"
             app:icon="@android:drawable/ic_menu_search" />
 
@@ -48,7 +70,7 @@
         android:id="@+id/recyclerViewExpenses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/filterLayout" />
+        android:layout_below="@id/buttonLayout" />
 
     <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

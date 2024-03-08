@@ -23,8 +23,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class ViewExpensesActivity extends AppCompatActivity {
@@ -94,10 +98,36 @@ public class ViewExpensesActivity extends AppCompatActivity {
                 String selectedCategory = spinnerCategoryFilter.getSelectedItem().toString();
                 String date = buttonPickDate.getText().toString();
 
-                filterExpenses(selectedCategory, date);
+                try {
+                    // Parse the date string into a Date object
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                    Date parsedDate = dateFormat.parse(date);
 
+                    // Format the parsed date back into the desired format
+                    SimpleDateFormat filterDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                    String formattedStartDate = filterDateFormat.format(parsedDate);
+
+                    filterExpenses(selectedCategory, formattedStartDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    // Handle the parse exception, if any
+                }
             }
         });
+
+        Button buttonClearFilter = findViewById(R.id.buttonClearFilter);
+
+        buttonClearFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinnerCategoryFilter.setSelection(0);
+
+                buttonPickDate.setText("");
+
+                observeExpenses();
+            }
+        });
+
 
     }
 
