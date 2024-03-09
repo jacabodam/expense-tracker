@@ -2,10 +2,12 @@ package com.drapp.expensetracker.Activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,6 +41,17 @@ public class ReportActivity extends AppCompatActivity {
         List<CategorySpending> categorySpendings = new ArrayList<>();
         categorySpendingAdapter = new CategorySpendingAdapter(categorySpendings);
         recyclerViewCategorySpending.setAdapter(categorySpendingAdapter);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Fetch and display
         displayTotalSpent();

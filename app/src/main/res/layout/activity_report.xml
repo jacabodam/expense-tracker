@@ -32,7 +32,7 @@
         android:id="@+id/textCategorySpending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category-wise Spending"
+        android:text="Spending by Category:"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textTotalSpent"
