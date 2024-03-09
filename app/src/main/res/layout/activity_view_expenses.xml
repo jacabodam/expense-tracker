@@ -72,13 +72,16 @@
     </LinearLayout>
 
     <!-- RecyclerView -->
+
+    <!-- Floating Action Buttons -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewExpenses"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/buttonLayout" />
+        android:layout_height="428dp"
+        android:layout_below="@id/buttonLayout"
+        android:layout_marginTop="-1dp" />
 
-    <!-- Floating Action Buttons -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddExpense"
         android:layout_width="wrap_content"

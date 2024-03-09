@@ -26,10 +26,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class ViewExpensesActivity extends AppCompatActivity {
@@ -52,6 +54,7 @@ public class ViewExpensesActivity extends AppCompatActivity {
 
         // Fetch expenses from Room database
         observeExpenses();
+        generateSampleDataIfRequired();
 
         FloatingActionButton fabAddExpense = findViewById(R.id.fabAddExpense);
         fabAddExpense.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +180,44 @@ public class ViewExpensesActivity extends AppCompatActivity {
                 adapter.setExpenses(expenses);
             }
         });
+    }
+
+    private void generateSampleDataIfRequired() {
+        ExpenseViewModel expenseViewModel = new ViewModelProvider(this).get(ExpenseViewModel.class);
+        expenseViewModel.getAllExpenses().observe(this, new Observer<List<Expense>>() {
+            @Override
+            public void onChanged(List<Expense> expenses) {
+                if (expenses == null || expenses.isEmpty()) {
+                    // Generate sample data if there is no existing data
+                    List<Expense> sampleExpenses = generateSampleExpenses();
+                    expenseViewModel.insertAll(sampleExpenses);
+                }
+            }
+        });
+    }
+
+    private List<Expense> generateSampleExpenses() {
+        List<Expense> sampleExpenses = new ArrayList<>();
+        String[] categories = {"Food", "Transport", "Entertainment", "Shopping", "Utilities"};
+        Random random = new Random();
+
+        for (int i = 0; i < 5; i++) {
+            String category = categories[random.nextInt(categories.length)];
+            double amount =  random.nextInt(101); // Generate random amount between 0 and 100
+
+            Expense expense = new Expense();
+            expense.setCategory(category);
+            expense.setAmount(amount);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
+            String date = sdf.format( Calendar.getInstance().getTime());
+
+            expense.setDate(date);
+
+            sampleExpenses.add(expense);
+        }
+        return sampleExpenses;
     }
 }
 

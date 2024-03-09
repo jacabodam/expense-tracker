@@ -1,9 +1,10 @@
 package com.drapp.expensetracker.Entities;
 import android.app.Application;
+import android.os.AsyncTask;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import com.drapp.expensetracker.Entities.Expense;
 import com.drapp.expensetracker.DAO.ExpenseDatabase;
 import com.drapp.expensetracker.MyApp;
 
@@ -39,4 +40,21 @@ public class ExpenseViewModel extends AndroidViewModel {
         return categorySpending;
     }
 
+    public void insertAll(List<Expense> expenses) {
+        new InsertAllAsyncTask(expenseDatabase).execute(expenses);
+    }
+
+    private static class InsertAllAsyncTask extends AsyncTask<List<Expense>, Void, Void> {
+        private ExpenseDatabase expenseDatabase;
+
+        InsertAllAsyncTask(ExpenseDatabase expenseDatabase) {
+            this.expenseDatabase = expenseDatabase;
+        }
+
+        @Override
+        protected Void doInBackground(List<Expense>... lists) {
+            expenseDatabase.expenseDao().insertAll(lists[0]);
+            return null;
+        }
+    }
 }
