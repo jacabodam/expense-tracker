@@ -35,8 +35,6 @@
             android:layout_weight="1"
             android:text="@string/pick_date" />
 
-
-
     </LinearLayout>
 
     <!-- Clear and Apply Filter Buttons -->
@@ -51,6 +49,10 @@
             android:id="@+id/buttonClearFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:text="@string/clear_filter"
             app:icon="@android:drawable/ic_menu_close_clear_cancel" />
@@ -59,6 +61,10 @@
             android:id="@+id/buttonApplyFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:text="@string/apply_filter"
             app:icon="@android:drawable/ic_menu_search" />
@@ -72,16 +78,52 @@
         android:layout_height="match_parent"
         android:layout_below="@id/buttonLayout" />
 
-    <!-- Floating Action Button -->
+    <!-- Floating Action Buttons -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/add_expense"
         android:src="@android:drawable/ic_input_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabViewChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/view_chart"
+        android:rotation="270"
+        android:src="@android:drawable/ic_menu_sort_by_size" />
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTotalSpending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:text="Total Spending"
+        android:textColor="@android:color/black"
+        android:src="@android:drawable/ic_menu_agenda"
+        android:textSize="18sp" />
 
 </RelativeLayout>

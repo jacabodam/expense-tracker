@@ -15,6 +15,7 @@ import com.drapp.expensetracker.Adapters.ExpenseAdapter;
 import com.drapp.expensetracker.Entities.Expense;
 import com.drapp.expensetracker.Entities.ExpenseViewModel;
 import com.drapp.expensetracker.R;
+import com.github.mikephil.charting.charts.Chart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.widget.Toolbar;
@@ -57,6 +58,27 @@ public class ViewExpensesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewExpensesActivity.this, AddExpenseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton fabViewChart = findViewById(R.id.fabViewChart);
+        fabViewChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewExpensesActivity.this, ChartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton fabViewReport = findViewById(R.id.fabTotalSpending);
+
+        // Set click listener for floating action button
+        fabViewReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the report activity
+                Intent intent = new Intent(ViewExpensesActivity.this, ReportActivity.class);
                 startActivity(intent);
             }
         });

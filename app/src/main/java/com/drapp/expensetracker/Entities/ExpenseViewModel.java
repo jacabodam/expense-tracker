@@ -13,11 +13,14 @@ public class ExpenseViewModel extends AndroidViewModel {
 
     private ExpenseDatabase expenseDatabase;
     private LiveData<List<Expense>> allExpenses;
-
+    private LiveData<Double> totalSpent;
+    private LiveData<List<CategorySpending>> categorySpending;
     public ExpenseViewModel(@NonNull Application application) {
         super(application);
         expenseDatabase = MyApp.getExpenseDatabase(); // Assuming MyApp has a method to access the database
         allExpenses = expenseDatabase.expenseDao().getAllExpenses();
+        totalSpent = expenseDatabase.expenseDao().getTotalSpent();
+        categorySpending = expenseDatabase.expenseDao().getCategorySpending();
     }
 
     public LiveData<List<Expense>> getAllExpenses() {
@@ -27,4 +30,13 @@ public class ExpenseViewModel extends AndroidViewModel {
     public LiveData<List<Expense>> getFilteredExpenses(String category, String startDate) {
         return expenseDatabase.expenseDao().getFilteredExpenses(category, startDate);
     }
+
+    public LiveData<Double> getTotalSpent() {
+        return totalSpent;
+    }
+
+    public LiveData<List<CategorySpending>> getCategorySpending() {
+        return categorySpending;
+    }
+
 }

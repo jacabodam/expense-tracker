@@ -10,6 +10,8 @@
     <string name="pick_date">Date</string>
     <string name="clear_filter">Clear</string>
     <string name="apply_filter">Apply</string>
+    <string name="view_chart">View Chart</string>
+    <string name="view_report">View Rreport</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
